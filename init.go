@@ -1,10 +1,12 @@
-package gogadaddyclient
+package godaddyclient
 
-func NewGoDaddyClient(baseURL string, key string, secrect string) *GoaddyClient {
+func NewGoDaddyClient(baseURL string, version string, key string, secrect string) *GoaddyClient {
 
 	var g GoaddyClient
 
-	g.API = &GodaddyAPI{BaseURL: baseURL, Key: key, Secret: secrect}
+	g.api = &GodaddyAPI{BaseURL: baseURL, Version: version, Key: key, Secret: secrect}
+
+	g.Domain = &Domain{&GodaddyAPI{BaseURL: baseURL, Version: version, Key: key, Secret: secrect}}
 
 	return &g
 }
